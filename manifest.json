@@ -1,0 +1,16 @@
+{
+  "short_name": "QuickGoApp",
+  "name": "QuickGoXpress Centro de Descargas",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1041/1041888.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./descarga.html",
+  "background_color": "#090a10",
+  "theme_color": "#00f2ff",
+  "display": "standalone",
+  "orientation": "portrait"
+}
