@@ -40,7 +40,36 @@ function animateParticles() {
 }
 animateParticles();
 
-// 2. BUSCADOR
+// 2. CONTROL DE INSTALACIÓN DIRECTA PWA
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Si la app se puede instalar, nos aseguramos que el botón diga "Instalar App"
+    const btnText = document.getElementById('btnInstallText');
+    if (btnText) btnText.textContent = "Instalar App";
+});
+
+function installOrOpenApp(targetUrl) {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('El usuario aceptó la instalación');
+                const btnText = document.getElementById('btnInstallText');
+                if (btnText) btnText.textContent = "Abrir Web App";
+            }
+            deferredPrompt = null;
+        });
+    } else {
+        // Si ya está instalada o el navegador no soporta prompt directo, abre la app directamente
+        window.open(targetUrl, '_blank');
+    }
+}
+
+// 3. BUSCADOR
 function filterApps() {
     let input = document.getElementById('appSearch').value.toLowerCase();
     let apps = document.getElementsByClassName('app-row');
@@ -51,7 +80,7 @@ function filterApps() {
     }
 }
 
-// 3. PERSISTENCIA DE ESTRELLAS Y COMENTARIOS CON LOCALSTORAGE
+// 4. PERSISTENCIA DE ESTRELLAS Y COMENTARIOS CON LOCALSTORAGE
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.app-row').forEach(appRow => {
         const appId = appRow.getAttribute('data-appid');
@@ -68,11 +97,9 @@ function loadAppData(appRow, appId) {
         comments: []
     };
 
-    // Actualizar contadores esquina superior
     appRow.querySelector('.total-voters').textContent = data.votersCount;
     appRow.querySelector('.total-stars').textContent = data.starsSum;
 
-    // Pintar estrellas del usuario
     const stars = appRow.querySelectorAll('.stars-rating .star');
     stars.forEach((s, idx) => {
         if (idx < data.userRating) {
@@ -82,7 +109,6 @@ function loadAppData(appRow, appId) {
         }
     });
 
-    // Cargar Comentarios
     const list = appRow.querySelector('.comments-list');
     list.innerHTML = "";
     data.comments.forEach(txt => {
@@ -105,7 +131,6 @@ function setupStars(appRow, appId) {
                 comments: []
             };
 
-            // Ajuste de contadores acumulativos
             if (data.userRating === 0) {
                 data.votersCount += 1;
                 data.starsSum += selectedValue;
@@ -115,8 +140,6 @@ function setupStars(appRow, appId) {
 
             data.userRating = selectedValue;
             localStorage.setItem(`app_data_${appId}`, JSON.stringify(data));
-
-            // Recargar interfaz
             loadAppData(appRow, appId);
         });
     });
