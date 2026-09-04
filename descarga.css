@@ -44,7 +44,7 @@ body {
 }
 
 .main-header {
-    padding: 18px 40px;
+    padding: 15px 20px;
     background: rgba(9, 10, 16, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
@@ -52,12 +52,13 @@ body {
     top: 0;
     width: 100%;
     z-index: 100;
+    box-sizing: border-box;
 }
 
 .brand {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--neon-blue);
     letter-spacing: 2px;
 }
@@ -75,15 +76,17 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 80px 20px 20px;
+    box-sizing: border-box;
 }
 
 .hero-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     margin-bottom: 15px;
+    line-height: 1.2;
 }
 
 .text-blue {
@@ -98,16 +101,17 @@ body {
 
 .hero-subtitle {
     color: var(--text-muted);
-    font-size: 1.2rem;
+    font-size: 1rem;
     max-width: 600px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
+    line-height: 1.5;
 }
 
 .btn-start {
-    padding: 16px 45px;
+    padding: 14px 35px;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
@@ -116,11 +120,11 @@ body {
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .btn-start:hover {
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-3px) scale(1.03);
     box-shadow: 0 0 35px rgba(255, 42, 95, 0.7);
 }
 
@@ -128,31 +132,31 @@ body {
 .catalog-section {
     max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px 100px;
+    padding: 40px 15px 80px;
 }
 
 .search-box-container {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .search-icon {
     position: absolute;
-    left: 20px;
+    left: 18px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--neon-blue);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 #appSearch {
     width: 100%;
-    padding: 18px 20px 18px 55px;
+    padding: 14px 18px 14px 50px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1rem;
     outline: none;
     backdrop-filter: blur(10px);
     box-sizing: border-box;
@@ -160,39 +164,38 @@ body {
 
 .catalog-header h2 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #fff;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-/* TARJETA DE APP CON CONTADORES */
+/* TARJETA DE APP */
 .app-row {
     position: relative;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 35px 20px 20px;
-    margin-bottom: 25px;
+    padding: 40px 20px 20px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
     backdrop-filter: blur(12px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Insignia de estadísticas en la esquina superior derecha */
 .app-stats-badge {
     position: absolute;
     top: 12px;
     right: 15px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 
@@ -201,22 +204,22 @@ body {
 }
 
 .app-logo {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     background: rgba(0, 242, 255, 0.1);
     border: 1px solid var(--neon-blue);
     border-radius: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--neon-blue);
 }
 
 .app-title {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #fff;
 }
 
@@ -231,16 +234,18 @@ body {
 .badge-on { color: #00ff88; }
 
 .btn-download {
-    padding: 10px 22px;
+    padding: 10px 18px;
     border-radius: 8px;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-active-download {
@@ -273,16 +278,16 @@ body {
 .rating-section {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 12px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
 }
 
 .stars-rating .star {
     color: #3a4259;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: all 0.2s ease;
 }
 
@@ -293,24 +298,25 @@ body {
 
 .comments-section {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .comment-input {
     flex: 1;
-    padding: 10px 14px;
+    padding: 8px 12px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     color: #fff;
     outline: none;
+    font-size: 0.85rem;
 }
 
 .btn-comment {
     background: var(--neon-red);
     color: #fff;
     border: none;
-    padding: 0 16px;
+    padding: 0 14px;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -318,15 +324,57 @@ body {
 .comments-list {
     list-style: none;
     padding: 0;
-    margin: 12px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .comments-list li {
     background: rgba(255, 255, 255, 0.04);
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #d1d5db;
     margin-top: 6px;
     border-left: 3px solid var(--neon-blue);
+}
+
+/* AJUSTES PARA TELÉFONOS (RESPONSIVE MEDIA QUERIES) */
+@media (max-width: 600px) {
+    .brand {
+        font-size: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.7rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .btn-start {
+        padding: 12px 28px;
+        font-size: 1.05rem;
+    }
+
+    .app-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        padding-top: 45px;
+    }
+
+    .app-stats-badge {
+        right: 50%;
+        transform: translateX(50%);
+        width: max-content;
+    }
+
+    .app-actions {
+        width: 100%;
+    }
+
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
 }
