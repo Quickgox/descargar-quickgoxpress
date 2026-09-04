@@ -1,9 +1,19 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickGoXpress - Centro de Descargas</title>
+    
+    <!-- Configuración PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00f2ff">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+
     <!-- Font Awesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fuentes Google -->
@@ -51,7 +61,7 @@
             <!-- Lista de Aplicaciones -->
             <div class="apps-list" id="appsContainer">
 
-                <!-- TARJETA 1: Guardar Recibos (DISPONIBLE Y CONECTADA) -->
+                <!-- TARJETA 1: Guardar Recibos (DISPONIBLE) -->
                 <div class="app-row available" data-appid="app-recibos" data-name="Guardar Recibos">
                     <!-- Esquina Superior: Contadores acumulados -->
                     <div class="app-stats-badge">
@@ -67,9 +77,10 @@
                         <span class="badge-status-item badge-on"><i class="fa-solid fa-circle-check"></i> Disponible</span>
                     </div>
                     <div class="app-actions">
-                        <a href="https://quickgox.github.io/Guardar-recibos/" class="btn-download btn-active-download" target="_blank">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Web App
-                        </a>
+                        <!-- Botón inteligente de instalación directa / abrir -->
+                        <button id="btnInstallRecibos" class="btn-download btn-active-download" onclick="installOrOpenApp('https://quickgox.github.io/Guardar-recibos/')">
+                            <i class="fa-solid fa-download"></i> <span id="btnInstallText">Instalar App</span>
+                        </button>
                     </div>
 
                     <!-- Sección de Calificación y Comentarios -->
@@ -94,7 +105,6 @@
 
                 <!-- TARJETA 2: QuickGoXpress Driver / Cargas -->
                 <div class="app-row unavailable" data-appid="app-driver" data-name="QuickGoXpress Driver Cargas">
-                    <!-- Esquina Superior: Contadores acumulados -->
                     <div class="app-stats-badge">
                         <span><i class="fa-solid fa-user-astronaut"></i> <span class="total-voters">0</span> valoraciones</span>
                         <span><i class="fa-solid fa-star star-badge"></i> <span class="total-stars">0</span> estrellas</span>
@@ -113,7 +123,6 @@
                         </button>
                     </div>
 
-                    <!-- Sección de Calificación y Comentarios -->
                     <div class="app-feedback-container">
                         <div class="rating-section">
                             <span>Tu valoración:</span>
