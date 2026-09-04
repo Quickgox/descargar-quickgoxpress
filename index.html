@@ -1,0 +1,142 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickGoXpress - Centro de Descargas</title>
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuentes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="descarga.css">
+</head>
+<body>
+
+    <!-- Fondo Dinámico de Partículas y Luces -->
+    <div class="glow-bg-layer"></div>
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Encabezado -->
+    <header class="main-header">
+        <div class="brand">
+            <i class="fa-solid fa-truck-fast"></i> QUICKGOXPRESS
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- 1. PANTALLA INICIAL (HERO) -->
+        <section class="hero-screen">
+            <h1 class="hero-title">
+                DESCARGAR APP DE <span class="text-blue">QUICKGO</span><span class="text-red">XPRESS</span>
+            </h1>
+            <p class="hero-subtitle">Plataforma oficial de distribución de aplicaciones y herramientas operativas.</p>
+            <a href="#catalog-section" id="btn-start" class="btn-start">
+                INICIAR <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </section>
+
+        <!-- 2. SECCIÓN DE BÚSQUEDA Y CATÁLOGO DE APPS -->
+        <section id="catalog-section" class="catalog-section">
+            
+            <!-- Buscador -->
+            <div class="search-box-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="appSearch" placeholder="Buscar app por nombre..." onkeyup="filterApps()">
+            </div>
+
+            <div class="catalog-header">
+                <h2><i class="fa-solid fa-boxes-stacked"></i> Catálogo de Aplicaciones</h2>
+            </div>
+
+            <!-- Lista de Aplicaciones -->
+            <div class="apps-list" id="appsContainer">
+
+                <!-- TARJETA 1: Guardar Recibos (DISPONIBLE Y CONECTADA) -->
+                <div class="app-row available" data-appid="app-recibos" data-name="Guardar Recibos">
+                    <!-- Esquina Superior: Contadores acumulados -->
+                    <div class="app-stats-badge">
+                        <span><i class="fa-solid fa-user-astronaut"></i> <span class="total-voters">0</span> valoraciones</span>
+                        <span><i class="fa-solid fa-star star-badge"></i> <span class="total-stars">0</span> estrellas</span>
+                    </div>
+
+                    <div class="app-logo">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                    <div class="app-info-bar">
+                        <span class="app-title">Guardar Recibos</span>
+                        <span class="badge-status-item badge-on"><i class="fa-solid fa-circle-check"></i> Disponible</span>
+                    </div>
+                    <div class="app-actions">
+                        <a href="https://quickgox.github.io/Guardar-recibos/" class="btn-download btn-active-download" target="_blank">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Web App
+                        </a>
+                    </div>
+
+                    <!-- Sección de Calificación y Comentarios -->
+                    <div class="app-feedback-container">
+                        <div class="rating-section">
+                            <span>Tu valoración:</span>
+                            <div class="stars-rating">
+                                <i class="fa-solid fa-star star" data-value="1"></i>
+                                <i class="fa-solid fa-star star" data-value="2"></i>
+                                <i class="fa-solid fa-star star" data-value="3"></i>
+                                <i class="fa-solid fa-star star" data-value="4"></i>
+                                <i class="fa-solid fa-star star" data-value="5"></i>
+                            </div>
+                        </div>
+                        <div class="comments-section">
+                            <input type="text" class="comment-input" placeholder="¿Qué le falta para ser 5 estrellas? Deja tu comentario...">
+                            <button class="btn-comment" onclick="addComment(this)"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        <ul class="comments-list"></ul>
+                    </div>
+                </div>
+
+                <!-- TARJETA 2: QuickGoXpress Driver / Cargas -->
+                <div class="app-row unavailable" data-appid="app-driver" data-name="QuickGoXpress Driver Cargas">
+                    <!-- Esquina Superior: Contadores acumulados -->
+                    <div class="app-stats-badge">
+                        <span><i class="fa-solid fa-user-astronaut"></i> <span class="total-voters">0</span> valoraciones</span>
+                        <span><i class="fa-solid fa-star star-badge"></i> <span class="total-stars">0</span> estrellas</span>
+                    </div>
+
+                    <div class="app-logo">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <div class="app-info-bar">
+                        <span class="app-title">QuickGoXpress Driver / Cargas</span>
+                        <span class="badge-status-item badge-off"><i class="fa-solid fa-circle-xmark"></i> No Disponible</span>
+                    </div>
+                    <div class="app-actions">
+                        <button class="btn-download disabled" disabled>
+                            <i class="fa-solid fa-lock"></i> No Disponible
+                        </button>
+                    </div>
+
+                    <!-- Sección de Calificación y Comentarios -->
+                    <div class="app-feedback-container">
+                        <div class="rating-section">
+                            <span>Tu valoración:</span>
+                            <div class="stars-rating">
+                                <i class="fa-solid fa-star star" data-value="1"></i>
+                                <i class="fa-solid fa-star star" data-value="2"></i>
+                                <i class="fa-solid fa-star star" data-value="3"></i>
+                                <i class="fa-solid fa-star star" data-value="4"></i>
+                                <i class="fa-solid fa-star star" data-value="5"></i>
+                            </div>
+                        </div>
+                        <div class="comments-section">
+                            <input type="text" class="comment-input" placeholder="¿Qué le falta para ser 5 estrellas? Deja tu comentario...">
+                            <button class="btn-comment" onclick="addComment(this)"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        <ul class="comments-list"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="descarga.js"></script>
+</body>
+</html>
